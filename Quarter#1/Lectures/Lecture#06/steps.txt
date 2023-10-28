@@ -1,0 +1,17 @@
+First the instruction
+        tsc --init              creates a config file related to typescript
+
+Next instruction is 
+        npm init -y             creates a package file
+
+Next we download a package
+        npm i @types/node -D    this allows us to use the module 'types' in 
+our code and is not available in pure javascript 
+
+Next use typescript to create objects
+
+Next make json objects
+
+You can link javascript files with each other in a HTML file using the syntax:
+        <script src = "./name.js" />
+        However this method is not desirable

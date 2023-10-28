@@ -1,0 +1,10 @@
+#!/usr/bin/env node
+
+npm ---> TO DOWNLOAD
+npx ---> TO TEMP DOWNLOAD & EXECUTE
+
+To upload
+    First login
+        npm login
+    Then
+        npm publish --access=public

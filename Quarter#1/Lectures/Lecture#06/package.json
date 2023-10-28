@@ -1,0 +1,6 @@
+{
+  "description": "",
+  "devDependencies": {
+    "@types/node": "^20.5.0"
+  }
+}

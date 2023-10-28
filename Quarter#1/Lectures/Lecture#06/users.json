@@ -1,0 +1,19 @@
+{
+    "name" : "Ali",
+    "age" : 10,
+    "gender" : "male"
+    /*No functions allowed in json*/
+}
+
+//can also create an array of objects
+
+[
+    {
+        "name" : "Ahmed",
+        "age" : 20
+    },
+    {
+        "name" : "Taha",
+        "age" : 21
+    }
+]
