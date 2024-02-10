@@ -1,0 +1,244 @@
+npx create-next-app
+	->NO -> Tailwind CSS
+	->NO -> Import Allias
+
+
+page.tsx 	-> tsx = Typescript XML
+
+const Home = () => 
+{
+	return 
+	{
+		<h1>Hello World</h1>
+	}
+}
+export default Home
+
+
+global.css
+
+h1
+{
+	color: red
+}
+
+
+npm run dev
+
+when we want to create a second page, we just create a new directory under src/app and create a new page.tsx in it
+about/page.tsx
+
+const AboutPage = () =>
+{
+    return <h1>This is about page.</h1>
+}
+
+export default AboutPage;
+
+
+To change routes we can add a href
+
+Page.tsx
+
+const Home = () => 
+{
+	return 
+	{
+		<a href = "/about">About</a>
+	}
+}
+export default Home
+
+However this is inefficient as it reloads the web over and over again
+
+import Link from "next/link"
+const Home = () => 
+{
+	return 
+	{
+		<Link href="/about">About</Link> // Difference between Link and link (initcap)
+	}
+}
+export default Home
+
+now if we want to return more than one link, we need to cover it in a div
+
+import Link from "next/link"
+const Home = () => 
+{
+	return 
+	{
+		<div>
+			<Link href="/"> Home </Link>
+			<Link href="/about"> About </Link>
+			<Link href="/contact"> Contact </Link>
+		</div>
+	}
+}
+export default Home
+
+Now what we want to reduce redundancy in our code
+
+
+import Link from "next/link"
+const Home = () => 
+{
+	return 
+	{
+		<div>
+			<Nav />
+			<h1> Hello World</h1>
+		</div>
+	}
+}
+
+const Nav = () =>
+{
+	return
+	{
+		<div>
+			<Link href="/"> Home </Link>
+			<Link href="/about"> About </Link>
+			<Link href="/contact"> Contact </Link>
+		</div>
+	}
+}
+export default Home
+
+Now if we want to use this Function in another Page.tsx, we will export it
+
+Page.tsx
+import Link from "next/link"
+const Home = () => 
+{
+	return 
+	{
+		<div>
+			<Nav />
+			<h1> Hello World</h1>
+		</div>
+	}
+}
+
+export const Nav = () =>
+{
+	return
+	{
+		<div>
+			<Link href="/"> Home </Link>
+			<Link href="/about"> About </Link>
+			<Link href="/contact"> Contact </Link>
+		</div>
+	}
+}
+export default Home
+
+
+About/Page.tsx
+
+import Link from "next/link"
+import {Nav} from "../about"
+const About = () => 
+{
+	return 
+	{
+		<div>
+			<Nav />
+			<h1> About Page </h1>
+		</div>
+	}
+}
+export default About
+
+if we want to use conditional statements in tsx then :
+
+Page.tsx
+
+import Link from "next/link"
+const Home = () => 
+{
+	return 
+	{
+		<div>
+			<Nav />
+			<h1> Hello World</h1>
+		</div>
+	}
+}
+
+export const Nav = () =>
+{
+	const isloggedin : boolean = true;
+	return
+	{
+		<div>
+			<Link href="/"> Home </Link>
+			<Link href="/about"> About </Link>
+			<Link href="/contact"> Contact </Link>
+			{
+				ifloggedin ? 
+					<Link href = "/dashboard"> Dashboard </Link>
+				:null
+			}
+		</div>
+	}
+}
+export default Home
+
+You can also move the Nav function to a new file in src/app called Nav.tsx
+
+Page.tsx
+
+import Link from "next/link"
+import {Nav} from "./Nav"
+const Home = () => 
+{
+	return 
+	{
+		<div>
+			<Nav />
+			<h1> Hello World</h1>
+		</div>
+	}
+}
+export default Home
+
+---
+
+export const Nav = (props : any) =>
+{
+	const isloggedin : boolean = true;
+	console.log(props);
+	return
+	{
+		<div>
+			<h1>{props.pageName}</h1>
+			<Link href="/"> Home </Link>
+			<Link href="/about"> About </Link>
+			<Link href="/contact"> Contact </Link>
+			{
+				ifloggedin ? 
+					<Link href = "/dashboard"> Dashboard </Link>
+					:
+					null
+			}
+		</div>
+	}
+}
+
+Page.tsx
+
+import Link from "next/link"
+import {Nav} from "./Nav"
+const Home = () => 
+{
+	return 
+	{
+		<div>
+			<Nav pageName = "HomePage"/>
+			<h1> Hello World</h1>
+		</div>
+	}
+}
+export default Home
+

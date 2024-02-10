@@ -1,0 +1,46 @@
+To create Route Groups we will create a folder with its name in round brackets
+When calling a page in a Route Group, we dont need to specify the Route Group in the URL
+Layouts can also be nested by creating another layout in a Route/Route Group.
+
+To change from Server Side Rendering to CLient Side Rendering {by default Server Side Rendering}, we write 'use client'. This creates a client component.
+
+To create dynamic segments{folders}, we will use square brackets []
+Ex.
+src/app
+|->profile
+	|->[name]
+		|->page.tsx
+
+page.tsx
+
+export default (props:any) =>
+{
+	return (
+		<h1>
+			{props.params.name}{`'`}s Profile
+		</h1>
+	);
+}
+
+To generate Static Params we will use a built-in function
+export const generateStaticParams = () =>
+{
+//	const names = ["okasha", "azfar", "bilal"];
+	
+	return [
+		{
+			name: "okasha"
+		},
+		{
+			name: "bilal"
+		},
+		{
+			name: "asfar"
+		}
+	];
+};
+this will optimized for these usernames as they are statically pre-generated.
+
+
+npm run build	->	For publishing and introducing optimazations
+will create a .next file whih is used to publish optimized functions
