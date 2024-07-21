@@ -1,0 +1,33 @@
+First install poetry.
+    pipx install poetry (if pipx not installed then install it first)
+
+To create a new project we will run 
+poetry new Lecture01
+Which ever folder you run this command in is now a python package
+
+Before we do anything, we want to create a virtual environment
+However poetry installs this in a rondom cache in the PC
+Therefore we need to run this command to make sure that the env will be in the project
+    poetry config virtualenvs.in-project true
+
+Then we go in the subfolder and run the command and create a venv
+    poetry run python --version
+
+To enter the venv, we simply run this command
+    poetry shell
+And to exit we simply write
+    exit
+
+Then add dependencies as such
+    poetry add fastapi "uvicorn[standard]"
+
+Now in the subfolder named as the main folder, we will create a main.py and populate it
+
+The we will run the command to run the project 
+    poetry run uvicorn lecture01.main:app --host 0.0.0.0 --port 8000
+                                    OR
+    poetry run uvicorn lecture01.main:app --host localhost --port 8000
+And open the website {0.0.0.0:8000 may not work because of how IPv4 works}
+
+For the documentation of the API just add /docs in the url
+We can add /openai.json for the openai specification

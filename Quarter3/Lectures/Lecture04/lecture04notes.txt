@@ -1,0 +1,7 @@
+poetry run pytest
+To run tests (i.e. test_main.py)
+
+DB browser for SQLite
+
+Try to run 
+learn-generative-ai/05_microservices_all_in_one_platform/11_microservice_db/fastapi_neon
